@@ -1,13 +1,13 @@
 const fs = require("fs");
 const express = require("express")
 const app = express()
+const path = require("path");
 const PORT = process.env.PORT || 3000;
-
 const Board = require("./Board")
 
 if (process.env.NODE_ENV === "production") {
 
-    app.use(express.static(path.join(__dirname, "./index.html")));
+    app.use(express.static(path.join(__dirname, ".")));
   }
 
 app.get('/', (req, res)=>{
