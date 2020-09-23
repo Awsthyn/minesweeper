@@ -38,4 +38,29 @@ Board.prototype.generateBoard = function(){
 }
 
 
+Board.prototype.resolve = function(){
+    let resolution = []
+    for(let i=0; i < this.value.length; i++){
+        let columnResolution = []
+        for(let j=0; j <this.value.length; j++){
+            if(this.value[i][j] === " "){
+            let counter = 0
+            this.value[i-1][j-1] === "*" ? counter++: null//arriba a la izquierda
+            this.value[i][j-1] === "*" ? counter++: null//arriba en el centro
+            this.value[i+1][j-1] === "*" ? counter++: null//arriba a la derecha
+            this.value[i-1][j] === "*" ? counter++: null//a la izquierda
+            this.value[i+1][j] === "*" ? counter++: null//a la derecha
+            this.value[i-1][j+1] === "*" ? counter++: null//abajo a la izquierda
+            this.value[i][j+1] === "*" ? counter++: null//abajo al centro
+            this.value[i+1][j+1] === "*" ? counter++: null//abajo a la derecha
+            columnResolution.push(counter)
+            }
+            else columnResolution.push(this.value[i][j])
+        }
+        resolution.push(columnResolution)
+    }
+    return resolution
+}
+
+
 module.exports = Board
