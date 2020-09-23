@@ -5,10 +5,11 @@ const path = require("path");
 const PORT = process.env.PORT || 3000;
 const Board = require("./Board")
 
+/*
 if (process.env.NODE_ENV === "production") {
 
     app.use(express.static(path.join(__dirname, ".")));
-  }
+  }*/
 
 app.get('/', (req, res)=>{
     let board = new Board();
