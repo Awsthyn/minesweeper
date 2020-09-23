@@ -1,3 +1,4 @@
+const fs = require("fs");
 const express = require("express")
 const app = express()
 const Board = require("./Board")
@@ -6,10 +7,12 @@ const Board = require("./Board")
 
 app.get('/', (req, res)=>{
     let board = new Board();
-
+    var html = fs.readFileSync(__dirname + "/index.html", "utf8");
+    html = html.replace(`{problem}`, JSON.stringify({problem: board.generateBoard()}))
+    html = html.replace(`{solution}`, JSON.stringify({solution: board.resolve()}))
     res.status(200)
-    res.json({problem: board.generateBoard(),
-              solution: board.resolve()})
+    
+    res.send(html)
 })
 
 app.listen(3000, () => {
