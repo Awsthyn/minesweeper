@@ -7,7 +7,7 @@ const Board = require("./Board")
 
 if (process.env.NODE_ENV === "production") {
 
-    app.use(express.static(path.join(__dirname, ".")));
+    app.use(express.static(path.join(__dirname, "./index.html")));
   }
 
 app.get('/', (req, res)=>{
