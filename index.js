@@ -1,9 +1,14 @@
 const fs = require("fs");
 const express = require("express")
 const app = express()
+const PORT = process.env.PORT || 3000;
+
 const Board = require("./Board")
 
+if (process.env.NODE_ENV === "production") {
 
+    app.use(express.static(path.join(__dirname, ".")));
+  }
 
 app.get('/', (req, res)=>{
     let board = new Board();
@@ -15,6 +20,6 @@ app.get('/', (req, res)=>{
     res.send(html)
 })
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
     console.log('MineSweeper listening at 3000'); // eslint-disable-line no-console
         });
