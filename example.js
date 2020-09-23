@@ -34,5 +34,5 @@ for (elem of example){
     }
 }
 console.log(asteriscos) // 317
-console.log(example.length-1 ** 2) // 676 casillas
-console.log(asteriscos / example.length-1 ** 2) // 50% tablero minado
+console.log(example.length-2 ** 2) // 625 casillas
+console.log(asteriscos / example.length-2 ** 2) // 50% tablero minado
