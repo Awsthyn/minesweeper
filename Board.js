@@ -8,30 +8,10 @@ function Board(){
 
 Board.prototype.generateBoard = function(size){
     this.value = []
-    function generateColumn(){
-        let column = []
-        for(j=0; j < size/*27*/; j++){
-            if(j === 0 || j === size-1/*26*/) column.push('|')
-            else{
-                let cell = new Cell()
-                column.push(cell.value)}
-        }
-        return column
-    }
-
-    function generateHorizontallBorders(){
-        let border = []
-        for(k=0; k < size/*27*/; k++){
-            if(k == 0 || k == size-1/*26*/) border.push('+')
-            else border.push('-')
-        }
-        return border
-    }
-
 
     for(i = 0; i <size/*27*/; i++){
-        if(i == 0 || i == size-1/*26*/) this.value.push(generateHorizontallBorders())
-        else this.value.push(generateColumn())
+        if(i == 0 || i == size-1/*26*/) this.value.push(generateHorizontallBorders(size))
+        else this.value.push(generateColumn(size))
     }
     return this.value
 }
@@ -61,5 +41,26 @@ Board.prototype.resolve = function(){
     return resolution
 }
 
+//Funciones auxiliares
+
+function generateColumn(size){
+    let column = []
+    for(j=0; j < size/*27*/; j++){
+        if(j === 0 || j === size-1/*26*/) column.push('|')
+        else{
+            let cell = new Cell()
+            column.push(cell.value)}
+    }
+    return column
+}
+
+function generateHorizontallBorders(size){
+    let border = []
+    for(k=0; k < size/*27*/; k++){
+        if(k == 0 || k == size-1/*26*/) border.push('+')
+        else border.push('-')
+    }
+    return border
+}
 
 module.exports = Board
